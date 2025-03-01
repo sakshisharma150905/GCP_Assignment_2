@@ -1,0 +1,35 @@
+resources:
+- name: instance-template
+  type: compute.v1.instanceTemplate
+  properties:
+    properties:
+      machineType: e2-medium
+      disks:
+      - boot: true
+        autoDelete: true
+        initializeParams:
+          sourceImage: projects/debian-cloud/global/images/family/debian-11
+      networkInterfaces:
+      - network: global/networks/default
+        accessConfigs:
+        - name: External NAT
+          type: ONE_TO_ONE_NAT
+
+- name: instance-group
+  type: compute.v1.instanceGroupManager
+  properties:
+    baseInstanceName: auto-scale-instance
+    instanceTemplate: $(ref.instance-template.selfLink)
+    targetSize: 1
+    autoHealingPolicies:
+    - initialDelaySec: 300
+
+- name: autoscaler
+  type: compute.v1.autoscaler
+  properties:
+    target: $(ref.instance-group.selfLink)
+    autoscalingPolicy:
+      minNumReplicas: 1
+      maxNumReplicas: 10
+      cpuUtilization:
+        utilizationTarget: 0.6

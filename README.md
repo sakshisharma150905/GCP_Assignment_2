@@ -24,7 +24,7 @@ chmod +x setup-vm.sh
 ./setup-vm.sh
 ```
 This script will:
-- Create a VM instance with **Debian 11**.
+- Create a VM instance with **Ubuntu 20.04**.
 - Use an **e2-medium** machine type.
 - Assign a public IP and allow HTTP/HTTPS traffic.
 
@@ -39,7 +39,7 @@ This will:
 - Create an **instance group** based on a VM template.
 - Enable **auto-healing** with an initial delay of **300 seconds**.
 - Set **auto-scaling** based on **CPU utilization (60%)**.
-- Define **minimum 1 instance** and **maximum 5 instances**.
+- Define **minimum 1 instance** and **maximum 10 instances**.
 
 ---
 
@@ -58,7 +58,7 @@ This will:
 
 ## 🔥 **Auto-Scaling Policy**
 - **Minimum Instances:** 1  
-- **Maximum Instances:** 5  
+- **Maximum Instances:** 10  
 - **Scaling Trigger:** CPU utilization **≥ 60%**  
 
 ---

@@ -12,7 +12,7 @@ Run the following command to clone the repository and navigate into the director
 ```bash
 git clone https://github.com/your-username/gcp-vm-auto-scaling.git
 cd gcp-vm-auto-scaling
-2️⃣ Deploy the VM
+**### **2️⃣ Deploy the VM**
 Run the setup script to create a VM in GCP:
 
 bash
